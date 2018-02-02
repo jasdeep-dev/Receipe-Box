@@ -1,0 +1,19 @@
+= image_tag @recipe.avatar.url
+%h1 
+  = @recipe.title
+%p 
+  = @recipe.description
+%h1
+  Ingredients
+%h3
+  - @recipe.ingredients.each do |ingredient|
+    %li= ingredient.name
+%h1
+  Directions
+%h3
+  - @recipe.directions.each do |direction|
+    %li= direction.steps
+
+= link_to "Back",  root_path, class: "btn btn-primary"
+= link_to "Edit",  edit_recipe_path, class: "btn btn-primary"
+= link_to 'Destroy', @recipe, :method => :delete, :confirm => "Are you sure?", class: "btn btn-danger"
