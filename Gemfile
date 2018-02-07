@@ -26,7 +26,8 @@ gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'carrierwave', '~> 1.0'
-gem 'cocoon', '~> 1.2', '>= 1.2.11'
+gem "nested_form"
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

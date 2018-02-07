@@ -13,7 +13,8 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require cocoon
-//= require turbolinks
 //= require bootstrap-sprockets
+//= require jquery_nested_form
+//= require turbolinks
+
 

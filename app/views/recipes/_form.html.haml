@@ -1,4 +1,4 @@
-= simple_form_for @recipe, html: {multipart: true} do |f|
+= nested_form_for @recipe do |f|
   - if @recipe.errors.any?
     #errors
       %p
@@ -9,23 +9,24 @@
           %li
             = msg
   .panel-body
-    = f.input :title, input_html:{class: 'form-control'}
-    = f.input :description, input_html:{class: 'form-control'}
+    = f.text_field :title, class: 'form-control'
+    = f.text_field :description, class: 'form-control'
     %br
-    = f.file_field :avatar, input_html:{class: 'form-control'}
+    = f.file_field :avatar, class: 'form-control'
     %br
     %br
     .row
       .col-md-6
         #ingredients
-          = f.simple_fields_for :ingredients do |ingredient|
-            = render "ingredient_fields" , f: ingredient
+          = f.fields_for :ingredients do |ingredient|
+            = ingredient.text_field :name, class: 'form-control' 
+            = ingredient.link_to_remove "Remove", class: "btn btn-primary"
           .links
-            = link_to_add_association "Add ingredients", f, :ingredients, class: "btn btn-default add-button"
+          = f.link_to_add "Add ingredients", :ingredients, class: "btn btn-default add-button"
       .col-md-6
         #directions
-          = f.simple_fields_for :directions do |direction|
+          = f.fields_for :directions do |direction|
             = render "direction_fields" , f: direction
           .links
-            = link_to_add_association "Add directions", f, :directions, class: "btn btn-default add-button"
+          = f.link_to_add "Add directions", :directions, class: "btn btn-default add-button"
   = f.button :submit, class: 'btn btn-primary'
